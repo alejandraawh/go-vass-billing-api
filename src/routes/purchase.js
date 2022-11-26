@@ -6,7 +6,7 @@ const router = express.Router();
 
 // create a purchase
 router.post("/savePurchase", (req,res)=>{
-    const travel= travelSchema(req.body);
+    const travel= purchaseSchema(req.body);
     travel
     .save()
     .then((data)=>res.json(data))
@@ -15,7 +15,7 @@ router.post("/savePurchase", (req,res)=>{
 
 //get all the information of the purchases
 router.get("/getPurchaseInformation", (req,res)=>{
-    travelSchema
+    purchaseSchema
     .find()
     .then((data)=>res.json(data))
     .catch((error)=>res.json({message: error}));
@@ -25,7 +25,7 @@ router.get("/getPurchaseInformation", (req,res)=>{
 //get a purchase information
 router.get("/getPurchaseInformation/:id", (req,res)=>{
     const{ id }=req.params;
-    travelSchema
+    purchaseSchema
     .findById(id)
     .then((data)=>res.json(data))
     .catch((error)=>res.json({message: error}));
